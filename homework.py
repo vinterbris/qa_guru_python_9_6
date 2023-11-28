@@ -92,8 +92,6 @@ def test_readable_function():
 def make_pretty(function_name, *args):
     function_name = function_name.split("_")
     final_name = [word.title() for word in function_name]
-    # for word in function_name:
-    #     final_name.append(word.upper())
     if len(args) > 1:
         return f"{' '.join(final_name)} [{', '.join(args)}]"
     else:

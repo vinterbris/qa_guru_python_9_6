@@ -90,31 +90,36 @@ def test_readable_function():
 
 
 def make_pretty(function_name, *args):
-    function_name = function_name.split("_")
-    final_name = [word.title() for word in function_name]
-    if len(args) > 1:
-        result = f"{' '.join(final_name)} [{', '.join(args)}]"
-        print("\n", result)
-        return result
-    else:
-        result = f"{' '.join(final_name)} [{args[0]}]"
-        print("\n", result)
-        return result
+    result = (
+        function_name.__name__.title().replace("_", " ") + " [" + ", ".join(args) + "]"
+    )
+    print(result)
+    return result
+    # function_name = function_name.split("_")
+    # final_name = [word.title() for word in function_name]
+    # if len(args) > 1:
+    #     result = f"{' '.join(final_name)} [{', '.join(args)}]"
+    #     print("\n", result)
+    #     return result
+    # else:
+    #     result = f"{' '.join(final_name)} [{args[0]}]"
+    #     print("\n", result)
+    #     return result
 
 
 def open_browser(browser_name):
-    actual_result = make_pretty(open_browser.__name__, browser_name)
+    actual_result = make_pretty(open_browser, browser_name)
     assert actual_result == "Open Browser [Chrome]"
 
 
 def go_to_companyname_homepage(page_url):
-    actual_result = make_pretty(go_to_companyname_homepage.__name__, page_url)
+    actual_result = make_pretty(go_to_companyname_homepage, page_url)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 
 def find_registration_button_on_login_page(page_url, button_text):
     actual_result = make_pretty(
-        find_registration_button_on_login_page.__name__, page_url, button_text
+        find_registration_button_on_login_page, page_url, button_text
     )
     assert (
         actual_result

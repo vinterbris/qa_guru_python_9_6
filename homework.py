@@ -93,9 +93,13 @@ def make_pretty(function_name, *args):
     function_name = function_name.split("_")
     final_name = [word.title() for word in function_name]
     if len(args) > 1:
-        return f"{' '.join(final_name)} [{', '.join(args)}]"
+        result = f"{' '.join(final_name)} [{', '.join(args)}]"
+        print("\n", result)
+        return result
     else:
-        return f"{' '.join(final_name)} [{args[0]}]"
+        result = f"{' '.join(final_name)} [{args[0]}]"
+        print("\n", result)
+        return result
 
 
 def open_browser(browser_name):
